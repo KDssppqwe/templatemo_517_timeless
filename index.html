@@ -169,37 +169,6 @@
                                 title="Google Map showing our location">
                         </iframe>
                     </div>
-
-
-                    <!-- 使用 JavaScript 延遲載入 Google Maps -->
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var mapLoaded = false;
-
-                            function loadMap() {
-                                if (!mapLoaded) {
-                                    var script = document.createElement('script');
-                                    script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
-                                    document.head.appendChild(script);
-                                    mapLoaded = true;
-                                }
-                            }
-
-                            // 當用戶滾動到地圖位置時載入 Google Maps
-                            window.addEventListener('scroll', function() {
-                                var mapElement = document.getElementById('google-map');
-                                var mapPosition = mapElement.getBoundingClientRect();
-                                if (mapPosition.top < window.innerHeight && mapPosition.bottom >= 0) {
-                                    loadMap();
-                                }
-                            });
-                        });
-
-                        // 初始化地圖函數
-                        function initMap() {
-                            // Google Maps 初始化代碼
-                        }
-                    </script>
                 </div>
                <div class="col-lg-6 mb-5">
                 <h3 class="mb-4 tm-text-gray">Contact Us</h3>
