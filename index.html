@@ -164,11 +164,38 @@
                     <!-- GOOGLE MAP -->
                     <!-- 在地圖容器中，給予地圖一個 id -->
                     <div id="google-map" class="text-center mb-5">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.3030413476204!2…"
-                                class="google-map-iframe" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen=""
-                                title="Google Map showing our location">
-                        </iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.3030413476204!2d100.5641230193719!3d13.757206847615207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf51ce6427b7918fc!2sG+Tower!5e0!3m2!1sen!2sth!4v1510722015945"
+                                class="google-map-iframe" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
+                    <!-- 使用 JavaScript 延遲載入 Google Maps -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var mapLoaded = false;
+
+                            function loadMap() {
+                                if (!mapLoaded) {
+                                    var script = document.createElement('script');
+                                    script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
+                                    document.head.appendChild(script);
+                                    mapLoaded = true;
+                                }
+                            }
+
+                            // 當用戶滾動到地圖位置時載入 Google Maps
+                            window.addEventListener('scroll', function() {
+                                var mapElement = document.getElementById('google-map');
+                                var mapPosition = mapElement.getBoundingClientRect();
+                                if (mapPosition.top < window.innerHeight && mapPosition.bottom >= 0) {
+                                    loadMap();
+                                }
+                            });
+                        });
+
+                        // 初始化地圖函數
+                        function initMap() {
+                            // Google Maps 初始化代碼
+                        }
+                    </script>
                 </div>
                <div class="col-lg-6 mb-5">
                 <h3 class="mb-4 tm-text-gray">Contact Us</h3>
